@@ -1,0 +1,12 @@
+.headerFormat {
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    top: 0;
+    padding: 0px 20px;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0px auto;
+
+}
