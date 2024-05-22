@@ -1,0 +1,9 @@
+h1 {
+    text-align: center;
+}
+
+.heroSection {
+    background-color: grey;
+    padding: 100px;
+    margin: 0;
+}

@@ -4,9 +4,17 @@
     display: flex;
     flex-direction: row;
     top: 0;
-    padding: 0px 20px;
+    padding: 10px;
+    gap: 40px;
     justify-content: flex-start;
     width: 100%;
     margin: 0px auto;
+}
 
+#logo {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 1px solid black;
+    align-self: center;
 }
