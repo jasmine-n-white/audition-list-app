@@ -1,25 +1,45 @@
 import './App.css'
-import {useState, useEffect} from 'react';
-import {Routes, Route} from 'react-router-dom'
+import {useEffect} from 'react';
 import Header from './Header/Header.jsx'
 import Hero from './Hero/Hero.jsx'
 import Form from './Form/Form.jsx'
 import AuditionList from './AuditionList/AuditionList.jsx'
+import AuthStorage from './Context/auth.context'
+import {useAuthContext} from './Context/auth.context'
+import supabase from './config/supabaseClient.jsx'
+
 function App() {
-  const [posts, setPosts] = useState([]);
-  const addAudition = (newPost) => {
-    setPosts([...posts, newPost]);
+  const {posts, setPosts} = useAuthContext();
+  useEffect (() => {
+    fetchAuditions();
   }
+)
+const fetchAuditions = async () => {
+  const {data, error} = await supabase.from('auditions').select();
+  if (error) {
+    console.log(error);
+  }
+  setPosts(data);
+}
   return (
     <>
     <Header />
     <Hero />
     <div className="main">
       <Form />
-      <AuditionList auditions={posts} />
+      <AuditionList auditions={posts}/>
     </div>
     </>
   )
 }
 
-export default App
+function AppWrap() {
+  return (
+    <AuthStorage>
+      <App />
+    </AuthStorage>
+
+  )
+}
+
+export default AppWrap;
