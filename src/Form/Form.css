@@ -5,3 +5,7 @@ form {
     margin: 10px;
     padding: 0px 100px;
 }
+
+ul {
+    list-style-type: none;
+}

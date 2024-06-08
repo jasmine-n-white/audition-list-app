@@ -2,9 +2,11 @@ import {createContext, useContext, useState} from 'react'
 const AuthContext = createContext();
 
 export default function AuthStorage({children}) {
+    const date = new Date();
+    const currentDate = date.toISOString().split('T')[0];
     const [posts, setPosts] = useState("");
-    const [formData, setFormData] = useState({position: "", ensemble: "", location: "", deadline: "", date: "", website: ""})
-    const [errors, setErrors] = useState({position: "", ensemble: "", location: "", deadline: "", date: "", website: ""});
+    const [formData, setFormData] = useState({position: "", ensemble: "", location: "", deadline: currentDate, audDate: currentDate, website: ""})
+    const [errors, setErrors] = useState({position: "", ensemble: "", location: "", deadline: "", audDate: "", website: "", form:""});
 
     return (
         <AuthContext.Provider
