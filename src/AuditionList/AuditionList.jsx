@@ -7,7 +7,7 @@ function AuditionList({auditions}) {
     posts.push(<Audition key={i} audition={audition} />);
   }
   let extraText = "";
-  if (posts=="") {
+  if (auditions=="") {
     extraText= <p>No audition posts available to view yet. Create a new post!</p>
   }
   return (

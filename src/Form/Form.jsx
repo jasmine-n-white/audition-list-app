@@ -10,16 +10,12 @@ import { GoTrueClient } from '@supabase/supabase-js'
 function Form({fetchAuditions}) {
 
   const {formData, setFormData, errors, setErrors} = useAuthContext();
-  let validPosition = true;
-  let validEnsemble = true;
-  let validLocation = true;
+ 
   
   const handlePosition = (event) => {
     const {value} = event.target;
     if (value.length < 2) {
       setErrors({...errors, position:"Position Title is required."});
-      validPosition = false;
-      return validPosition;
     } else {
       setErrors({...errors, position:""});
     }
@@ -90,18 +86,20 @@ function Form({fetchAuditions}) {
 
   const addAudition = async (e) => {
     e.preventDefault();
+    if (errors.position||errors.ensemble||errors.location||errors.deadline||errors.audDate||errors.website)  {
+      setErrors({...errors, form:"Something is wrong with your form submission!" });
+    } else {
     const {error} = await supabase.from('auditions').insert({position: position, ensemble: ensemble, location: location, app_deadline: deadline, audition_date: audDate, orchestra_website: website});
     fetchAuditions();
     setFormData({position:"", ensemble:"", location:"", deadline: currentDate, audDate: currentDate , website:""});
     setErrors({position:"", ensemble:"", location:"", deadline:"", audDate:"", website:"", form:""});
-  
-      setErrors({...errors, form:"Something is wrong with your form submission!" });
-    
+    fetchAuditions();
+    }
   
   }
   return (
    <>
-   <form onSubmit={addAudition}>
+   <form>
     <label htmlFor="position">Position Title</label>
     <input id="position" name="position" type="text" value={formData.position} onChange={handlePosition} />
     <label htmlFor="ensemble">Ensemble Group Name</label>
@@ -122,7 +120,7 @@ function Form({fetchAuditions}) {
       )}
       </ul>
     </section>
-    <button>Add Audition</button>
+    <button onClick={addAudition}>Add Audition</button>
    </form>
    </>
   )
