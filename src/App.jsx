@@ -12,8 +12,7 @@ function App() {
   const {posts, setPosts} = useAuthContext();
   useEffect (() => {
     fetchAuditions();
-  }
-)
+  }, [])
 const fetchAuditions = async () => {
   const {data, error} = await supabase.from('auditions').select();
   if (error) {

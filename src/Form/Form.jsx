@@ -4,20 +4,27 @@ import './Form.css'
 import {useEffect} from 'react'
 import {useAuthContext} from '../Context/auth.context'
 import supabase from '../config/supabaseClient.jsx'
+import { GoTrueClient } from '@supabase/supabase-js'
 
 
 function Form({fetchAuditions}) {
 
   const {formData, setFormData, errors, setErrors} = useAuthContext();
-
+  let validPosition = true;
+  let validEnsemble = true;
+  let validLocation = true;
+  
   const handlePosition = (event) => {
     const {value} = event.target;
     if (value.length < 2) {
       setErrors({...errors, position:"Position Title is required."});
+      validPosition = false;
+      return validPosition;
     } else {
       setErrors({...errors, position:""});
-      setFormData({...formData, position: value});
     }
+      setFormData({...formData, position: value});
+    
   }
 
   const handleEnsemble = (event) => {
@@ -26,8 +33,9 @@ function Form({fetchAuditions}) {
       setErrors({...errors, ensemble:"Ensemble Name is required."});
     } else {
       setErrors({...errors, ensemble:""});
-      setFormData({...formData, ensemble: value});
     }
+      setFormData({...formData, ensemble: value});
+    
   }
    const handleLocation = (event) => {
     const {value} = event.target;
@@ -35,36 +43,36 @@ function Form({fetchAuditions}) {
       setErrors({...errors, location:"Ensemble Name is required."});
     } else {
       setErrors({...errors, location:""});
-      setFormData({...formData, location: value});
     }
+      setFormData({...formData, location: value});
+    
   }
 
   const date = new Date();
   const currentDate = date.toISOString().split('T')[0];
 //working on getting selected date to be chosen
   const handleDeadline = (event) => {
-    const selectedDate = new Date(event.target.value);
-    const formattedDate = value.toISOString().split('T')[0];
-    if (formattedDate < currentDate){
+    const {value} = event.target;
+    if (value < currentDate){
       console.log("Too early");
       setErrors({...errors, deadline:"Application Deadline must be a valid date."});
     } else {
       setErrors({...errors, deadline:""});
-      setFormData({formData, deadline: formattedDate});
-      console.log(formattedDate);
     }
+      setFormData({...formData, deadline: value});
+    
   }
 
   const handleDate = (event) => {
-    const selectedDate = new Date(event.target.value);
-    const formattedDate = date.toISOString().split('T')[0];
-    if (formattedDate < currentDate){
+    const {value} = event.target;
+    if (value < currentDate){
       console.log("Too early");
       setErrors({...errors, audDate: "Audition Date must be a valid date."});
     } else {
       setErrors({...errors, audDate:""});
-      setFormData({formData, audDate: formattedDate});
     }
+      setFormData({...formData, audDate: value});
+    
   }
 
   const handleWebsite = (event) => {
@@ -73,22 +81,23 @@ function Form({fetchAuditions}) {
       setErrors({...errors, website: "Website must be a valid URL."})
     }else{
       setErrors({...errors, website:""});
+    }
       setFormData({...formData, website: value});
-    } 
+    
   }
+
+  const {position, ensemble, location, deadline, audDate, website} = formData;
 
   const addAudition = async (e) => {
     e.preventDefault();
-    const {position, ensemble, location, deadline, audDate, website} = formData;
-    if (position && !errors.position && ensemble && !errors.ensemble && location && !errors.location && deadline && !errors.deadline && date && !errors.date && website && !errors.website) {
-    const {error} = await supabase.from('auditions').insert({position: position, ensemble: ensemble, location: location, app_deadline: deadline, audition_date: date, orchestra_website: website});
+    const {error} = await supabase.from('auditions').insert({position: position, ensemble: ensemble, location: location, app_deadline: deadline, audition_date: audDate, orchestra_website: website});
     fetchAuditions();
     setFormData({position:"", ensemble:"", location:"", deadline: currentDate, audDate: currentDate , website:""});
     setErrors({position:"", ensemble:"", location:"", deadline:"", audDate:"", website:"", form:""});
-    fetchAuditions();
-    } else {
-      setErrors({...errors, form:"Something is wrong with your form submission!" })
-    }
+  
+      setErrors({...errors, form:"Something is wrong with your form submission!" });
+    
+  
   }
   return (
    <>
