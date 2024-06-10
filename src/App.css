@@ -5,10 +5,4 @@
   text-align: center;
 }
 
-.main {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  padding: 100px;
 
-}

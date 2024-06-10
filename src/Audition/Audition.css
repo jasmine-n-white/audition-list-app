@@ -1,0 +1,13 @@
+.auditionPost {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    text-wrap:wrap;
+    margin: 10px;
+    padding: 10px;
+    gap: 5px;
+    justify-content: center;
+    height: min-content;
+    line-height: 50%;;
+
+}

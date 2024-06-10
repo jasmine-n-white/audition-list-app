@@ -1,9 +1,11 @@
 import './App.css'
 import {useEffect} from 'react';
+import {Route, Routes} from 'react-router-dom'
 import Header from './Header/Header.jsx'
 import Hero from './Hero/Hero.jsx'
 import Form from './Form/Form.jsx'
 import AuditionList from './AuditionList/AuditionList.jsx'
+import Update from './Update/Update.jsx'
 import AuthStorage from './Context/auth.context'
 import {useAuthContext} from './Context/auth.context'
 import supabase from './config/supabaseClient.jsx'
@@ -23,11 +25,13 @@ const fetchAuditions = async () => {
   return (
     <>
     <Header />
-    <Hero />
-    <div className="main">
-      <Form />
-      <AuditionList auditions={posts}/>
-    </div>
+    <Routes>
+      <Route path="/" Component={Hero} />
+      <Route path="/create" Component={Form}/>
+      <Route path="/update" Component={Update}/>
+      <Route path="/AuditionList" element={<AuditionList auditions={posts}/>}/>
+    </Routes>
+    
     </>
   )
 }

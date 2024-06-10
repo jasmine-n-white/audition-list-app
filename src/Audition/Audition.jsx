@@ -2,6 +2,7 @@ import React from 'react'
 import './Audition.css'
 import supabase from '../config/supabaseClient.jsx'
 import {useAuthContext} from '../Context/auth.context'
+import {Link} from 'react-router-dom'
 
 function Audition({audition}) {
   const {posts, setPosts} = useAuthContext();
@@ -16,12 +17,12 @@ function Audition({audition}) {
   return (
     <div className="auditionPost">
       <h2>{audition?.position}</h2>
-      <h2>{audition?.ensemble}</h2>
-      <h2>{audition?.location}</h2>
-      <h2>Deadline: {audition?.app_deadline}</h2>
-      <h2>Date: {audition?.audition_date}</h2>
-      <h2>{audition?.orchestra_website}</h2>
-      <button>Edit</button>
+      <p>{audition?.ensemble}</p>
+      <p>{audition?.location}</p>
+      <p>Deadline: {audition?.app_deadline}</p>
+      <p>Date: {audition?.audition_date}</p>
+      <p>{audition?.orchestra_website}</p>
+      <Link to={"/update"}><button>Edit</button></Link>
       <button onClick={() => deleteAudition(audition.id)}>Delete</button>
     </div>
   )

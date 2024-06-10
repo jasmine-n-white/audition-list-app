@@ -3,7 +3,10 @@ h1 {
 }
 
 .heroSection {
-    background-color: grey;
     padding: 100px;
-    margin: 0;
+    background: url("https://images.unsplash.com/photo-1613142659418-718b2ae6940d?q=80&w=3005&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"), rgba(0,0,0, 0.4);
+    background-blend-mode: soft-light;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }

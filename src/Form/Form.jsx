@@ -4,14 +4,23 @@ import './Form.css'
 import {useEffect} from 'react'
 import {useAuthContext} from '../Context/auth.context'
 import supabase from '../config/supabaseClient.jsx'
-import { GoTrueClient } from '@supabase/supabase-js'
 
 
-function Form({fetchAuditions}) {
+function Form() {
 
-  const {formData, setFormData, errors, setErrors} = useAuthContext();
+  const {formData, setFormData, errors, setErrors, posts, setPosts} = useAuthContext();
  
-  
+  useEffect (() => {
+    fetchAuditions();
+  }, [])
+const fetchAuditions = async () => {
+  const {data, error} = await supabase.from('auditions').select();
+  if (error) {
+    console.log(error);
+  }
+  setPosts(data);
+}
+
   const handlePosition = (event) => {
     const {value} = event.target;
     if (value.length < 2) {
@@ -83,10 +92,10 @@ function Form({fetchAuditions}) {
   }
 
   const {position, ensemble, location, deadline, audDate, website} = formData;
-
+  const invalid = !position||errors.position||!ensemble||errors.ensemble||!location||errors.location||errors.deadline||errors.audDate||!website||errors.website;
   const addAudition = async (e) => {
     e.preventDefault();
-    if (errors.position||errors.ensemble||errors.location||errors.deadline||errors.audDate||errors.website)  {
+    if (invalid)  {
       setErrors({...errors, form:"Something is wrong with your form submission!" });
     } else {
     const {error} = await supabase.from('auditions').insert({position: position, ensemble: ensemble, location: location, app_deadline: deadline, audition_date: audDate, orchestra_website: website});
