@@ -26,9 +26,9 @@ const fetchAuditions = async () => {
     <>
     <Header />
     <Routes>
-      <Route path="/" Component={Hero} />
-      <Route path="/create" Component={Form}/>
-      <Route path="/update" Component={Update}/>
+      <Route path="/" element={<Hero/>} />
+      <Route path="/create" element={<Form/>}/>
+      <Route path="/:auditionid" element={<Update/>}/>
       <Route path="/AuditionList" element={<AuditionList auditions={posts}/>}/>
     </Routes>
     

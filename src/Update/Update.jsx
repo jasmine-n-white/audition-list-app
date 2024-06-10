@@ -4,16 +4,16 @@ import {useEffect} from 'react'
 import {useParams, useNavigate} from 'react-router-dom'
 import supabase from '../config/supabaseClient'
 function Update() {
-    const {id} = useParams();
+    const {auditionid} = useParams();
     const navigate = useNavigate();
     const {formData, setFormData, errors, setErrors} = useAuthContext();
 
     useEffect (() => {
         const fetchAudition = async () => {
             try {
-                const {data} = await supabase.from('auditions').select().eq("id", id).single();
+                const {data} = await supabase.from('auditions').select().eq("id", auditionid).single();
                 if (data) {
-                    setFormData({...formData, position: data.position, ensemble: data.ensemble, location: data.location, deadline: data.app_deadline, audDate: data.audition_date, website: data.orchestra_website});
+                    setFormData({...formData, position: data?.position, ensemble: data?.ensemble, location: data?.location, deadline: data?.app_deadline, audDate: data?.audition_date, website: data?.orchestra_website});
                 } else {
                     navigate("/", {replace: true});
                 }
@@ -23,7 +23,7 @@ function Update() {
             }
         };
         fetchAudition();
-      }, [id])
+      }, [auditionid])
     
     
       const handlePosition = (event) => {
@@ -104,7 +104,7 @@ function Update() {
           setErrors({...errors, form:"Something is wrong with your form submission!" });
           return;
         } 
-        const {data, error} = await supabase.from('auditions').update({position: position, ensemble: ensemble, location: location, app_deadline: deadline, audition_date: audDate, orchestra_website: website}).eq("id", id);
+        const {data, error} = await supabase.from('auditions').update({position: position, ensemble: ensemble, location: location, app_deadline: deadline, audition_date: audDate, orchestra_website: website}).eq("id", auditionid);
         if (error) {
             console.log(error)
         } else {

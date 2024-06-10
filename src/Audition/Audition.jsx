@@ -22,7 +22,7 @@ function Audition({audition}) {
       <p>Deadline: {audition?.app_deadline}</p>
       <p>Date: {audition?.audition_date}</p>
       <p>{audition?.orchestra_website}</p>
-      <Link to={"/update"}><button>Edit</button></Link>
+      <Link to={"/"+audition.id}><button>Edit</button></Link>
       <button onClick={() => deleteAudition(audition.id)}>Delete</button>
     </div>
   )
