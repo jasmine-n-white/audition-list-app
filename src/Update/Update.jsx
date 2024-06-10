@@ -6,8 +6,20 @@ import supabase from '../config/supabaseClient'
 function Update() {
     const {auditionid} = useParams();
     const navigate = useNavigate();
-    const {formData, setFormData, errors, setErrors} = useAuthContext();
+    const {formData, setFormData, errors, setErrors, posts, setPosts} = useAuthContext();
 
+    useEffect (() => {
+      fetchAuditions();
+    }, [])
+
+  const fetchAuditions = async () => {
+    const {data, error} = await supabase.from('auditions').select();
+    if (error) {
+      console.log(error);
+    }
+    setPosts(data);
+
+  }
     useEffect (() => {
         const fetchAudition = async () => {
             try {
@@ -105,11 +117,13 @@ function Update() {
           return;
         } 
         const {data, error} = await supabase.from('auditions').update({position: position, ensemble: ensemble, location: location, app_deadline: deadline, audition_date: audDate, orchestra_website: website}).eq("id", auditionid);
+        fetchAuditions();
         if (error) {
             console.log(error)
         } else {
-            setErrors(null);
-            navigate("/");
+            setFormData({position:"", ensemble:"", location:"", deadline: currentDate, audDate: currentDate , website:""});
+            setErrors({position:"", ensemble:"", location:"", deadline:"", audDate:"", website:"", form:""});
+            navigate("/auditionList");
         }
         
         
