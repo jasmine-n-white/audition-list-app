@@ -9,6 +9,12 @@ import supabase from '../config/supabaseClient.jsx'
 function Form() {
 
   const {formData, setFormData, errors, setErrors, posts, setPosts} = useAuthContext();
+
+  const utc = new Date();
+  const offset = utc.getTimezoneOffset();
+  const date = new Date(utc.getTime() + offset * 60000);
+  const currentDate = date.toISOString().split('T')[0];
+
  
   useEffect (() => {
     fetchAuditions();
@@ -53,10 +59,7 @@ const fetchAuditions = async () => {
     
   }
 
-  const date = new Date();
-  const currentDate = date.toISOString().split('T')[0];
-//working on getting selected date to be chosen
-  const handleDeadline = (event) => {
+   const handleDeadline = (event) => {
     const {value} = event.target;
     if (value < currentDate){
       console.log("Too early");

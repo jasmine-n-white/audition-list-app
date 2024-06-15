@@ -5,6 +5,5 @@
   grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
   padding: 20px;
   justify-self: center;
-  margin: 20px;
-  width: 100%;
+  margin-top: 125px;
 }

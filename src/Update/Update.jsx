@@ -1,6 +1,7 @@
 import React from 'react'
 import {useAuthContext} from '../Context/auth.context'
 import {useEffect} from 'react'
+import validator from 'validator'
 import {useParams, useNavigate} from 'react-router-dom'
 import supabase from '../config/supabaseClient'
 function Update() {
@@ -70,8 +71,10 @@ function Update() {
         
       }
     
-      const date = new Date();
-      const currentDate = date.toISOString().split('T')[0];
+  const utc = new Date();
+  const offset = utc.getTimezoneOffset();
+  const date = new Date(utc.getTime() + offset * 60000);
+  const currentDate = date.toISOString().split('T')[0];
     //working on getting selected date to be chosen
       const handleDeadline = (event) => {
         const {value} = event.target;

@@ -12,18 +12,36 @@ function Audition({audition}) {
       console.log("error");
     }
     setPosts(posts.filter((audition) => audition.id !== id ));
-    
+
   }
+
+  const formatDeadline = () => {
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const date = new Date(audition?.app_deadline.replace(/-/g, '\/').replace(/T.+/, ''));
+    const month = months[date.getMonth()];
+    return month + ' ' + date.getDate() +', '+ date.getFullYear();
+  }
+
+  const formatAudDate = () => {
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const date = new Date(audition?.audition_date.replace(/-/g, '\/').replace(/T.+/, ''));
+    const month = months[date.getMonth()];
+    return month + ' ' + date.getDate() + ', '+ date.getFullYear();
+  }
+
+  const deadline = formatDeadline();
+  const audDate = formatAudDate();
+
   return (
     <div className="auditionPost">
       <h2>{audition?.position}</h2>
       <p>{audition?.ensemble}</p>
       <p>{audition?.location}</p>
-      <p>Deadline: {audition?.app_deadline}</p>
-      <p>Date: {audition?.audition_date}</p>
-      <p>{audition?.orchestra_website}</p>
-      <Link to={"/"+audition.id}><button>Edit</button></Link>
-      <button onClick={() => deleteAudition(audition.id)}>Delete</button>
+      <p>Deadline: {deadline}</p>
+      <p>Date: {audDate}</p>
+      <a href={audition?.orchestra_website} id="webLink" target="_blank">{audition.ensemble} Website</a>
+      <Link to={"/"+audition.id}><button id="editButton">Edit</button></Link>
+      <button onClick={() => deleteAudition(audition.id)} id="deleteButton">Delete</button>
     </div>
   )
 }
