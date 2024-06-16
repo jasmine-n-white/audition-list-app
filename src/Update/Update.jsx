@@ -71,9 +71,7 @@ function Update() {
         
       }
     
-  const utc = new Date();
-  const offset = utc.getTimezoneOffset();
-  const date = new Date(utc.getTime() + offset * 60000);
+  const date = new Date();
   const currentDate = date.toISOString().split('T')[0];
     //working on getting selected date to be chosen
       const handleDeadline = (event) => {

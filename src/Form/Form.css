@@ -1,15 +1,19 @@
 form {
-  text-align: center;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 75%;
   margin: 150px;
   border: 1px solid white;
   border-radius: 5px;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-self: center;
-  height: min-content;
 }
 
 ul {
     list-style-type: none;
+}
+
+.errors {
+  color: red;
 }

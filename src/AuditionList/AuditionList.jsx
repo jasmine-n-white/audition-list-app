@@ -1,5 +1,6 @@
 import React from 'react'
 import Audition from '../Audition/Audition.jsx'
+import {Link} from 'react-router-dom'
 import './AuditionList.css'
 
 function AuditionList({auditions}) {
@@ -9,11 +10,14 @@ function AuditionList({auditions}) {
     posts.push(<Audition key={i} audition={audition} />);
   }
   let extraText = "";
-  if (posts=="") {
+  if (posts.length==0) {
     extraText= <p>No audition posts available to view yet. Create a new post!</p>
   }
   return (
-    <div className="auditionList">{extraText}{posts}</div>
+    <>
+      <div className="auditionPageExtras">{extraText}{<Link to={"/create"}><button>Add New Audition</button></Link>}</div>
+      <div className="auditionList">{posts}</div>
+    </>
   )
 }
 

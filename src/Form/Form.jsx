@@ -9,13 +9,10 @@ import supabase from '../config/supabaseClient.jsx'
 function Form() {
 
   const {formData, setFormData, errors, setErrors, posts, setPosts} = useAuthContext();
-
-  const utc = new Date();
-  const offset = utc.getTimezoneOffset();
-  const date = new Date(utc.getTime() + offset * 60000);
+  var date = new Date();
   const currentDate = date.toISOString().split('T')[0];
 
- 
+ console.log(date);
   useEffect (() => {
     fetchAuditions();
   }, [])
@@ -26,7 +23,7 @@ const fetchAuditions = async () => {
   }
   setPosts(data);
 }
-
+    
   const handlePosition = (event) => {
     const {value} = event.target;
     if (value.length < 2) {
@@ -61,7 +58,7 @@ const fetchAuditions = async () => {
 
    const handleDeadline = (event) => {
     const {value} = event.target;
-    if (value < currentDate){
+    if (value <= currentDate){
       console.log("Too early");
       setErrors({...errors, deadline:"Application Deadline must be a valid date."});
     } else {
@@ -73,7 +70,7 @@ const fetchAuditions = async () => {
 
   const handleDate = (event) => {
     const {value} = event.target;
-    if (value < currentDate){
+    if (value <= currentDate){
       console.log("Too early");
       setErrors({...errors, audDate: "Audition Date must be a valid date."});
     } else {
@@ -109,6 +106,7 @@ const fetchAuditions = async () => {
     }
   
   }
+
   return (
    <>
    <form>

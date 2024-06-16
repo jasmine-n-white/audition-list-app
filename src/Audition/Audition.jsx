@@ -32,6 +32,7 @@ function Audition({audition}) {
   const deadline = formatDeadline();
   const audDate = formatAudDate();
 
+
   return (
     <div className="auditionPost">
       <h2>{audition?.position}</h2>

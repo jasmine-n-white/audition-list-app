@@ -2,7 +2,9 @@ import {createContext, useContext, useState} from 'react'
 const AuthContext = createContext();
 
 export default function AuthStorage({children}) {
-    const date = new Date();
+    const utc = new Date();
+    const offset = utc.getTimezoneOffset();
+    const date = new Date(utc.getTime() + offset * 60000);
     const currentDate = date.toISOString().split('T')[0];
     const [posts, setPosts] = useState("");
     const [formData, setFormData] = useState({position: "", ensemble: "", location: "", deadline: currentDate, audDate: currentDate, website: ""})
