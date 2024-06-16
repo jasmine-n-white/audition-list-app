@@ -1,15 +1,17 @@
 import React from 'react'
 import validator from 'validator'
 import './Form.css'
+import {useNavigate} from 'react-router-dom'
 import {useEffect} from 'react'
 import {useAuthContext} from '../Context/auth.context'
 import supabase from '../config/supabaseClient.jsx'
 
 
 function Form() {
-
+  
+  const navigate = useNavigate();
   const {formData, setFormData, errors, setErrors, posts, setPosts} = useAuthContext();
-  var date = new Date();
+  const date = new Date();
   const currentDate = date.toISOString().split('T')[0];
 
  console.log(date);
@@ -103,6 +105,7 @@ const fetchAuditions = async () => {
     setFormData({position:"", ensemble:"", location:"", deadline: currentDate, audDate: currentDate , website:""});
     setErrors({position:"", ensemble:"", location:"", deadline:"", audDate:"", website:"", form:""});
     fetchAuditions();
+    navigate("/auditionList");
     }
   
   }

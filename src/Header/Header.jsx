@@ -17,9 +17,22 @@ function Header() {
         <img src="https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg" id="logo" alt="site logo"/>
         <h1><Link to={"/"}>Title</Link></h1>
         <ul className="navLinks">
-          <li><Link to={"/AuditionList"} className="link" onClick={handleClickBack}>View Auditions</Link></li>
+          <li><Link to={"/AuditionList"} className="link" onClick={handleClickBack}>My Auditions</Link></li>
         </ul>
         <button id="accountButton">Sign In</button>
+
+        <div className="navMobile">
+          <div className="mobileMenuButton">
+            <div className="line"></div>
+            <div className="line"></div>
+            <div className="line"></div>
+          </div>
+          <ul className="dropdown">
+            <li><p><Link to={"/"}>Home</Link></p></li>
+            <li><Link to={"/AuditionList"} className="link" onClick={handleClickBack}>My Auditions</Link></li>
+            <li>Sign In</li>
+          </ul>
+        </div>
 
     </header>
     </>

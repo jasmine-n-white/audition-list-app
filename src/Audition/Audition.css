@@ -1,17 +1,19 @@
 .auditionPost {
     justify-self: center;
-    width: 55%;
+    width: 50%;
+    color: #c0e0de;
     display: flex;
     flex-direction: column;
-    border: 1px solid white;
+    border: 1px solid #c0e0de;
     text-wrap:wrap;
     margin: 10px;
-    padding: 10px;
-    gap: 20px;
+    padding: 10px 0px;
+    gap: 10px;
     justify-content: center;
     height: min-content;
     line-height: 50%;;
     background-color: #50000c;
+    line-height: 0.1rem;
 }
 
 #webLink {
@@ -25,11 +27,16 @@
     justify-content: center;
     align-self:center;
     height: 200px;
-    width:300px;
+    width:75%;
+    font-size: 1.5rem;
 
 }
 
 #editButton {
-    width: 100%;
+    width: 48%;
 }
 
+#deleteButton{
+    background-color: #bb0218;
+    margin: 0px 200px;
+}

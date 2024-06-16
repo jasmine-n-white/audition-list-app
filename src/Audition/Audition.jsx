@@ -35,11 +35,11 @@ function Audition({audition}) {
 
   return (
     <div className="auditionPost">
-      <h2>{audition?.position}</h2>
-      <p>{audition?.ensemble}</p>
+      <h2 id="position">{audition?.position}</h2>
+      <h3 id="ensemble">{audition?.ensemble}</h3>
       <p>{audition?.location}</p>
-      <p>Deadline: {deadline}</p>
-      <p>Date: {audDate}</p>
+      <h3>Deadline: {deadline}</h3>
+      <h3>Date: {audDate}</h3>
       <a href={audition?.orchestra_website} id="webLink" target="_blank">{audition.ensemble} Website</a>
       <Link to={"/"+audition.id}><button id="editButton">Edit</button></Link>
       <button onClick={() => deleteAudition(audition.id)} id="deleteButton">Delete</button>
