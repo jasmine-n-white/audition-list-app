@@ -7,6 +7,8 @@ export default function AuthStorage({children}) {
     const [posts, setPosts] = useState("");
     const [formData, setFormData] = useState({position: "", ensemble: "", location: "", deadline: currentDate, audDate: currentDate, website: ""})
     const [errors, setErrors] = useState({position: "", ensemble: "", location: "", deadline: "", audDate: "", website: "", form:""});
+    const [showMenu, setShowMenu] = useState(false);
+
 
     return (
         <AuthContext.Provider
@@ -16,7 +18,9 @@ export default function AuthStorage({children}) {
                 formData,
                 setFormData,
                 errors,
-                setErrors
+                setErrors,
+                showMenu,
+                setShowMenu
             }}>
                 {children}
         </AuthContext.Provider>

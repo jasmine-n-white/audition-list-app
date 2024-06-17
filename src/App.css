@@ -6,4 +6,50 @@
   background-color: #02051f;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  width: 75%;
+  gap: 10px;
+  margin: 150px;
+  background-color: #035e7c;
+  border-radius: 5px;
+  padding: 20px;
+}
 
+form input {
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 10px;
+ 
+}
+
+ ul {
+    list-style-type: none;
+}
+
+.errors {
+  color: rgb(255, 230, 71);
+}
+
+@media screen and (max-width: 1300px) {
+  form {
+    margin: 150px 250px;
+    width: 50%;
+  }
+}
+
+
+@media screen and (max-width: 800px) {
+  form {
+    margin: 150px 100px;
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  form {
+    margin: 150px 70px;
+  }
+}

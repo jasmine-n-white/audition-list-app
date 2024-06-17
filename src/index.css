@@ -16,9 +16,12 @@
 a {
   font-weight: 500;
   text-decoration: none;
+  color: black;
 }
-a:hover {
-  color: #fff;
+
+
+a:visited {
+  text-decoration: none;
 }
 
 body {

@@ -5,11 +5,8 @@ function Hero() {
   return (
    <>
    <div className="heroSection">
-    <h1>Auditions</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
+    <h1>Audition Planning Made Easier</h1>
+    <p>Tailored to meet the unique needs of solo artists and ensemble members alike, Audition Maestro helps you effortlessly manage audition schedules and track any upcoming auditions you plan on taking. Focus on perfecting your performance while Audition Maestro handles the logistics, ensuring you never miss a chance to showcase your talent.</p>
    </div>
    </>
   )

@@ -1,12 +1,12 @@
 import React from 'react'
 import './Header.css'
 import {Link} from 'react-router-dom'
+import {useEffect} from 'react';
 import {useAuthContext} from '../Context/auth.context'
 
 
 function Header() {
-  const {formData, setFormData} = useAuthContext();
-
+  const {formData, setFormData, showMenu, setShowMenu} = useAuthContext();
   const handleClickBack = () => {
     setFormData({...formData, position: "", ensemble: "", location: "", deadline: currentDate, audDate: currentDate, website: ""});
   }
@@ -14,24 +14,27 @@ function Header() {
   return (
     <>
     <header className="headerFormat">
-        <img src="https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg" id="logo" alt="site logo"/>
-        <h1><Link to={"/"}>Title</Link></h1>
+        <img src="https://img.freepik.com/premium-photo/colorful-music-logo-design-downloade_555090-4358.jpg" id="logo" alt="site logo"/>
+        <h2 id="title"><Link to={"/"}>Audition Maestro</Link></h2>
         <ul className="navLinks">
-          <li><Link to={"/AuditionList"} className="link" onClick={handleClickBack}>My Auditions</Link></li>
+          <li><p><Link to={"/"}>Home</Link></p></li>
+          <li><p><Link to={"/AuditionList"} className="link" onClick={handleClickBack}>Auditions</Link></p></li>
+          <li><p>Contact</p></li>
         </ul>
-        <button id="accountButton">Sign In</button>
+        <button id="accountButton">Account</button>
 
         <div className="navMobile">
-          <div className="mobileMenuButton">
+          <div className="mobileMenuButton" onClick={()=>setShowMenu(showMenu => !showMenu)}>
             <div className="line"></div>
             <div className="line"></div>
             <div className="line"></div>
           </div>
-          <ul className="dropdown">
+          {showMenu && (<ul className="dropdown">
             <li><p><Link to={"/"}>Home</Link></p></li>
-            <li><Link to={"/AuditionList"} className="link" onClick={handleClickBack}>My Auditions</Link></li>
-            <li>Sign In</li>
-          </ul>
+            <li><Link to={"/AuditionList"} className="link" onClick={handleClickBack}>Auditions</Link></li>
+            <li>Contact</li>
+            <li>Account</li>
+          </ul>)}
         </div>
 
     </header>

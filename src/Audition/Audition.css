@@ -4,7 +4,7 @@
     color: #c0e0de;
     display: flex;
     flex-direction: column;
-    border: 1px solid #c0e0de;
+    border-radius: 5px;
     text-wrap:wrap;
     margin: 10px;
     padding: 10px 0px;
@@ -12,10 +12,12 @@
     justify-content: center;
     height: min-content;
     line-height: 50%;;
-    background-color: #50000c;
-    line-height: 0.1rem;
+    background-color: #035e7c;
 }
 
+#ensemble {
+    font-style: italic;
+}
 #webLink {
     background: url("https://us.images.westend61.de/0000933291j/french-horn-players-in-orchestra-CUF01345.jpg"), rgba(0,0,0,0.7);
     background-blend-mode: soft-light;
@@ -26,10 +28,15 @@
     flex-direction: column;
     justify-content: center;
     align-self:center;
+    color: white;
     height: 200px;
     width:75%;
     font-size: 1.5rem;
 
+}
+
+#position, #ensemble, #location {
+    line-height: 0.2rem;
 }
 
 #editButton {
@@ -38,5 +45,13 @@
 
 #deleteButton{
     background-color: #bb0218;
-    margin: 0px 200px;
+    align-self: center;
+    width: 48%;
+}
+
+@media screen and (max-width: 830px) {
+   #webLink {
+    font-size: 0.9rem;
+    line-height: 1rem;
+   }
 }

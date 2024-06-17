@@ -4,12 +4,17 @@
     display: flex;
     flex-direction: row;
     top: 0;
-    padding: 0px 50px;
+    padding: 10px 50px;
     gap: 40px;
     position: fixed;
     justify-content: flex-start;
     margin:0px auto ;
     width: 100%;
+}
+
+#title {
+    animation: fadeIn 1s ease-in-out forwards;
+    font-size: 2.2rem;
 }
 
 #logo {
@@ -18,18 +23,38 @@
     border-radius: 50%;
     border: 1px solid black;
     align-self: center;
+    animation: fadeIn 1s ease-in-out forwards;
+
 }
 
 .navLinks {
     display: flex;
     flex-direction: row;
     align-self: center;
-    padding-left: 400px;
+    margin-left: 250px;
+    color: black;
+    animation: fadeIn 1s ease-in-out forwards;
 }
 
 .navLinks li {
-    border-right: 1px solid white;
+    border-right: 1px solid black;
     padding: 10px;
+}
+
+.navLinks li p:hover {
+    animation: scaleUp 0.5s ease-in-out forwards;
+}
+
+.navLinks li p:not(:hover) {
+    animation: scaleDown 1s ease-in-out forwards;
+}
+
+#accountButton:hover {
+    animation: scaleUp 0.5s ease-in-out forwards;
+}
+
+#accountButton:not(:hover) {
+    animation: scaleDown 1s ease-in-out forwards;
 }
 
 .navLinks li:last-of-type {
@@ -38,15 +63,21 @@
 
 #accountButton {
     align-self: center;
-    margin-left: 10px;
+    margin-left: 200px;
     background-color: #f92d44;
+    animation: fadeIn 1s ease-in-out forwards;
+
 }
 
 .navMobile {
+    visibility:collapse;
     color: black;
     display: flex;
     flex-direction: column;
-    
+    position: fixed;
+    top: 0;
+    right: 10px;
+    z-index: 1;    
 }
 
 .mobileMenuButton {
@@ -56,12 +87,88 @@
     height: 30px;
     margin: 20px;
     justify-content: space-between;
-    position: relative;
+    animation: fadeIn 1s ease-in-out forwards;
+
 
 }
 
 .line {
     width: 100%;
-    color: #000;
+    background-color: #000;
     height: 3px;
+}
+
+.dropdown {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    padding: 10px 20px 0 0; 
+    width: 100px;
+    background-color: red;
+    height: 35vh;
+    border-radius: 5px;
+    color: #fff;
+
+}
+
+.dropdown li, .dropdown a{
+    padding: 5px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    color: #fff;
+}
+
+.dropdown li:hover {
+    background: #fbb505;
+    width: 100%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0%;
+    } to {
+        opacity: 100%;
+    }
+}
+
+@keyframes scaleUp {
+    from {transform: scale(1);}
+    to {transform: scale(1.2);}
+}
+
+@keyframes scaleDown {
+    from {transform: scale(1.2);}
+    to {transform: scale(1);}
+}
+
+@media screen and (max-width: 1400px) {
+    .navLinks {
+        margin-left: 50px;
+    }
+    #accountButton {
+        margin-left: 300px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .headerFormat{
+        padding-left: 5px;
+    }
+    .navLinks, #accountButton {
+        margin-left: 50px;
+    }
+    
+}
+
+@media screen and (max-width: 900px){
+    #title{
+        font-size: 25px;
+        align-self: center;
+    }
+    .navLinks, #accountButton {
+        display: none;
+    }
+    .navMobile{
+        visibility: visible;
+    }
 }
