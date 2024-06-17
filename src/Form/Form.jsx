@@ -1,6 +1,5 @@
 import React from 'react'
 import validator from 'validator'
-import './Form.css'
 import {useNavigate} from 'react-router-dom'
 import {useEffect} from 'react'
 import {useAuthContext} from '../Context/auth.context'

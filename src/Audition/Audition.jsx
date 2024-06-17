@@ -38,9 +38,9 @@ function Audition({audition}) {
       <h2 id="position">{audition?.position}</h2>
       <h3 id="ensemble">{audition?.ensemble}</h3>
       <p>{audition?.location}</p>
-      <h3>Deadline: {deadline}</h3>
-      <h3>Date: {audDate}</h3>
-      <a href={audition?.orchestra_website} id="webLink" target="_blank">{audition.ensemble} Website</a>
+      <h3 id="deadline">Deadline: {deadline}</h3>
+      <h3 id="audDate">Date: {audDate}</h3>
+      <a href={audition?.orchestra_website} id="webLink" target="_blank" aria-label="A hyperlink to the website of the corresponding ensemble, displayed over an image of a lineup of orchestra musicians playing the French Horn">{audition.ensemble} Website</a>
       <Link to={"/"+audition.id}><button id="editButton">Edit</button></Link>
       <button onClick={() => deleteAudition(audition.id)} id="deleteButton">Delete</button>
     </div>

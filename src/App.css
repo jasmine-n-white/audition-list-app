@@ -33,13 +33,16 @@ form input {
   color: rgb(255, 230, 71);
 }
 
+form button:hover {
+  animation: formColorChange 0.4s ease-in-out forwards;
+}
+
 @media screen and (max-width: 1300px) {
   form {
     margin: 150px 250px;
     width: 50%;
   }
 }
-
 
 @media screen and (max-width: 800px) {
   form {
@@ -51,5 +54,16 @@ form input {
 @media screen and (max-width: 400px) {
   form {
     margin: 150px 70px;
+  }
+}
+
+@keyframes formColorChange {
+  from {
+    color: #fff;
+    background-color: #1a1a1a
+  } 
+  to {
+    color: black;
+    background-color: rgb(127, 224, 226);
   }
 }

@@ -14,7 +14,7 @@ function Header() {
   return (
     <>
     <header className="headerFormat">
-        <img src="https://img.freepik.com/premium-photo/colorful-music-logo-design-downloade_555090-4358.jpg" id="logo" alt="site logo"/>
+        <img src="https://img.freepik.com/premium-photo/colorful-music-logo-design-downloade_555090-4358.jpg" id="logo" alt="a picture of a colorful treble clef"/>
         <h2 id="title"><Link to={"/"}>Audition Maestro</Link></h2>
         <ul className="navLinks">
           <li><p><Link to={"/"}>Home</Link></p></li>

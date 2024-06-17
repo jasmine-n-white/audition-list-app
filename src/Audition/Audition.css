@@ -13,6 +13,7 @@
     height: min-content;
     line-height: 50%;;
     background-color: #035e7c;
+    animation: fadeIn 0.3s ease-in-out;
 }
 
 #ensemble {
@@ -32,7 +33,10 @@
     height: 200px;
     width:75%;
     font-size: 1.5rem;
+}
 
+#webLink:hover {
+    animation: linkColorChange 0.3s ease-in-out forwards;
 }
 
 #position, #ensemble, #location {
@@ -43,15 +47,61 @@
     width: 48%;
 }
 
+#editButton:hover {
+    animation: scaleUp 1s ease-in-out forwards;
+}
+
+#editButton:not(:hover) {
+    animation: scaleDown 1s ease-in-out ;
+}
+
+
 #deleteButton{
     background-color: #bb0218;
     align-self: center;
     width: 48%;
 }
 
+#deleteButton:hover {
+    animation: scaleUp 1s ease-in-out forwards;
+}
+
+#deleteButton:not(:hover) {
+    animation: scaleDown 1s ease-in-out;
+}
+
+
 @media screen and (max-width: 830px) {
-   #webLink {
+   #webLink, #audDate, #deadline {
     font-size: 0.9rem;
     line-height: 1rem;
    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0%;
+    } to {
+        opacity: 100%;
+    }
+}
+
+@keyframes scaleUp {
+    from {transform: scale(1);}
+    to {transform: scale(1.2);}
+}
+
+@keyframes scaleDown {
+    from {transform: scale(1.2);}
+    to {transform: scale(1);}
+}
+
+@keyframes linkColorChange {
+    from {
+        color: white;
+    }
+    to {
+        color: yellow;
+        border: 1px solid white;
+    }
 }

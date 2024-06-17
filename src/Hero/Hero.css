@@ -16,8 +16,22 @@
     border-bottom: 1px solid #fff;
 }
 
+.heroSection h1, .heroSection p {
+    animation: fadeIn 1s ease-in-out;
+
+}
+
 @media screen and (max-width: 1000px) {
     .heroSection {
         padding: 100px;
     }
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0%;
+    } to {
+        opacity: 100%;
+    }
+}
+
