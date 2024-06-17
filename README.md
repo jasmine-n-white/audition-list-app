@@ -1,8 +1,3 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Audition Maestro is a reactJS web application designed for professional musicians who are taking numerous auditions to win jobs. This app allows the user to create, store, and modify a personal list of upcoming auditions they may take. Ultimately, it accomplishes the goal of streamlining the process of audition preparation for musicians so they can worry less about logistics and focus more on practicing.
