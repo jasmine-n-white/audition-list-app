@@ -76,6 +76,12 @@
     font-size: 0.9rem;
     line-height: 1rem;
    }
+
+   #position, #ensemble {
+    line-height: 1.2rem;
+    font-size: 1.2rem;
+   }
+
 }
 
 @keyframes fadeIn {

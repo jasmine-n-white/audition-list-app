@@ -164,6 +164,7 @@
     #title{
         font-size: 25px;
         align-self: center;
+        padding-right: 100px;
     }
     .navLinks, #accountButton {
         display: none;
